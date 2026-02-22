@@ -4,7 +4,7 @@ The initial setup, data model design, and core logic for the Mahjong Score App h
 
 ## 1. Project Initialization & GitHub Repository
 - Initialized a git repository and linked it to `git@github.com:KatsuhisaMorita/iPhone-majong-app.git`.
-- Configured the `.github/workflows/ios-build.yml` for Windows -> GitHub Actions -> Sideloadly unsigned IPA build pipeline.
+- Configured the `.github/workflows/ios-build.yml` for Windows -> GitHub Actions -> SideStore unsigned IPA build pipeline.
 - Created the foundational `MahjongScoreApp.xcodeproj/project.pbxproj` and `Info.plist`.
 
 ## 2. Core Logic (`ScoreCalculator`)
@@ -31,4 +31,4 @@ Since this environment is Windows, the application requires building via GitHub 
 **Next Steps for the User**:
 1. You can inspect the committed code. If the environment supports pushing to the repository, push this code to `main` to trigger the GitHub Action.
 2. Download the `MahjongScoreApp.ipa` from the GitHub Actions Artifacts.
-3. Use Sideloadly to install it on your iPhone and test the functionality!
+3. Use SideStore to install it on your iPhone and test the functionality!

@@ -71,5 +71,5 @@ SwiftUIによる画面群。
 - `ScoreCalculator` の単体テストを作成し、五捨六入や同点時（上家優先）、飛び賞等のエッジケースが正しく計算されるか検証します。（必要に応じてSwiftのTestターゲットを構成するかロジック検証スクリプトを用意します）
 
 ### Manual Verification
-- GitHub Actionsによるビルドが成功し、生成された `MahjongScoreApp.ipa` が Sideloadly で実機にインストール・起動できることを確認していただきます。
+- GitHub Actionsによるビルドが成功し、生成された `MahjongScoreApp.ipa` が SideStore で実機にインストール・起動できることを確認していただきます。
 - 画面上でプレイヤー登録〜点数入力〜自動計算〜結果のリスト表示 が正しく行えるか検証していただきます。

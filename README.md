@@ -1,4 +1,4 @@
-# MajongScoreMemo (AltStore版)
+# MajongScoreMemo (SideStore版)
 
 iPhone用の麻雀点数記録アプリ + Windows用UIシミュレーター
 
@@ -8,7 +8,7 @@ iPhone用の麻雀点数記録アプリ + Windows用UIシミュレーター
 ├── swift/              # iOS Swiftアプリ (SwiftUI + SwiftData)
 ├── web-simulator/      # Node.js UIシミュレーター (Vite)
 ├── .github/workflows/  # CI/CD (テスト→ビルド→IPA生成)
-└── altstore-app.json   # AltStore配布マニフェスト
+└── README.md
 ```
 
 ## 開発ワークフロー
@@ -36,14 +36,11 @@ git add . && git commit -m "Update" && git push origin main
 #   2. iOS IPA ビルド (unsigned)
 ```
 
-### 4. iPhoneへのインストール (AltStore)
-1. AltServer をWindowsにインストール
-2. iPhoneに AltStore をインストール
-3. AltStore の「Sources」に以下URLを追加:
-   ```
-   https://raw.githubusercontent.com/KatsuhisaMorita/iPhone-majong-app-AltStore/main/altstore-app.json
-   ```
-4. アプリを AltStore からインストール
+### 4. iPhoneへのインストール (SideStore)
+1. iPhone に SideStore をインストール（初回のみ、[sidestore.io](https://sidestore.io/) 参照）
+2. GitHub Actions の Artifacts から IPA をダウンロード
+3. IPA を iPhone に転送（AirDrop / iCloud Drive 等）
+4. SideStore アプリから IPA をインストール
 
 ## 主な機能
 - **スコア計算**: 25,000点持ち30,000点返し。五捨六入による精密な端数処理
