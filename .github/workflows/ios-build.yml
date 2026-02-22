@@ -1,0 +1,71 @@
+name: Build iOS App (AltStore)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  # Step 1: Run JS logic sync check
+  sync-check:
+    name: Verify Swift/JS logic sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        working-directory: web-simulator
+        run: npm ci
+
+      - name: Run ScoreCalculator tests
+        working-directory: web-simulator
+        run: npx vitest run
+
+  # Step 2: Build unsigned IPA
+  build:
+    name: Build unsigned IPA
+    runs-on: macos-latest
+    needs: sync-check
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Build for Device (unsigned)
+        working-directory: swift
+        run: |
+          xcodebuild build \
+            -project MahjongScoreApp.xcodeproj \
+            -scheme MahjongScoreApp \
+            -destination 'generic/platform=iOS' \
+            -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_IDENTITY="" \
+            PROVISIONING_PROFILE="" \
+            CONFIGURATION_BUILD_DIR=$PWD/build/Release-iphoneos
+
+      - name: Package as IPA
+        working-directory: swift
+        run: |
+          mkdir -p build/Payload
+          cp -r build/Release-iphoneos/MajongScoreMemo.app build/Payload/
+          cd build
+          zip -r MajongScoreMemo.ipa Payload/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MajongScoreMemo-ipa.zip
+          path: swift/build/MajongScoreMemo.ipa

@@ -1,0 +1,22 @@
+{
+  "name": "MajongScoreMemo Source",
+  "identifier": "com.majong.scorememo.source",
+  "sourceURL": "https://raw.githubusercontent.com/KatsuhisaMorita/iPhone-majong-app-AltStore/main/altstore-app.json",
+  "apps": [
+    {
+      "name": "MajongScoreMemo",
+      "bundleIdentifier": "com.majong.scorememo",
+      "developerName": "KatsuhisaMorita",
+      "version": "1.0.0",
+      "versionDate": "2026-02-22",
+      "versionDescription": "初期リリース - 麻雀スコア記録アプリ",
+      "downloadURL": "https://github.com/KatsuhisaMorita/iPhone-majong-app-AltStore/releases/latest/download/MajongScoreMemo.ipa",
+      "localizedDescription": "iPhone向けの直感的な麻雀点数記録・管理アプリ。ウマ・オカ・飛び賞・チップの柔軟なルール設定対応。",
+      "iconURL": "https://raw.githubusercontent.com/KatsuhisaMorita/iPhone-majong-app-AltStore/main/icon.png",
+      "tintColor": "0A84FF",
+      "size": 2000000,
+      "screenshotURLs": []
+    }
+  ],
+  "news": []
+}
